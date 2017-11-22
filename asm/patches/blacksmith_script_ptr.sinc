@@ -1,0 +1,4 @@
+
+
+.org 0x80f2ed0
+.word TestScript2

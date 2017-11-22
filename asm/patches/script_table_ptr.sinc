@@ -1,0 +1,4 @@
+
+.align 2
+.org 0x0807dffc
+.word script_table
