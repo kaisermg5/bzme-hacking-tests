@@ -1,4 +1,14 @@
 
+.include "asm/macros/script_cmds.inc"
+
 
 .org 0x80f2ed0
 .word TestScript2
+
+.org 0x080f2ea0
+.word ScriptBlacksmith
+
+.org 0x080f2eb0
+.word ScriptZelda
+
+

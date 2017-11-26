@@ -2,11 +2,44 @@
 #ifndef SCRIPT_H
 #define SCRIPT_H
 
-struct ScriptEnv {
-	u16 (*script_data)[];
-	u8 _unk[12];
-	u16 unk2;
+struct ScriptRaw {
+	u16 data[0];
 };
+
+struct ScriptEnv {
+/*0x00*/	struct ScriptRaw * script;
+/*0x04*/	u8 never_seen[4];
+/*0x08*/	u32 behaviour_flags;
+/*0x0C*/	u8 never_seen2[4];
+/*0x10*/	u16 unk; 			// set to 0x2d by script cmd_34
+/*0x12*/	u8 never_seen3[2];
+/*0x14*/	u32 lastresult;
+};
+
+struct ScriptEnv2 {
+/*0x00*/	u8 never_seen[0x39];
+/*0x39*/	u8 ocurred_actions;
+/*0x3a*/	u8 never_seen2[0x2e];
+/*0x68*/	u8 something_related_to_talking; 	// used by function 0x8066289, used by the blacksmith script
+};
+
+struct GlobalScriptEnv {
+/*0x00*/	u8 never_seen[6];
+/*0x06*/	u8 unk;				// set to 0 with script cmd_34
+/*0x07*/	u8 a_flag: 1;		// script command excecuted succesfully?
+			u8 never_seen2: 7;
+};
+
+struct UnkImportant {
+/*0x00*/	u8 never_seen[0xc];
+/*0x0c*/	u8 unk;				// readed by script cmd_34
+/*0x0d*/	u8 never_seen2[7];
+/*0x14*/	u8 someflags_setted_by_script_cmds_49_to_4c;
+
+};
+
+struct UnkImportant unk_important;		// 0x03001160
+struct GlobalScriptEnv gScriptEnv;		// 0x02033280
 
 
 extern void script_cmd_0(void * unk_struct, struct ScriptEnv * se);
